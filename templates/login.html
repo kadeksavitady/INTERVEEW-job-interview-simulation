@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2>Login / Register</h2>
+        <form method="POST">
+            <input type="hidden" name="action" value="{{ request.form.get('action', 'login') }}">
+            <div class="mb-3">
+                <label>Username</label>
+                <input type="text" class="form-control" name="username" required>
+            </div>
+            <div class="mb-3">
+                <label>Email</label>
+                <input type="email" class="form-control" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label>Password</label>
+                <input type="password" class="form-control" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <p class="mt-3">Switch to {{ 'Register' if request.form.get('action') == 'login' else 'Login' }}? Edit form action.</p>
+    </div>
+</div>
+{% endblock %}
